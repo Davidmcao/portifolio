@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>David Mendes - Desenvolvedor Full Stack</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <span class="loading-text">DM</span>
+            </div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header/Navigation -->
+    <header class="header" id="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <a href="#home" class="brand-link">
+                    <span class="brand-icon">{"</span>
+                    <span class="brand-text">David Mendes</span>
+                    <span class="brand-icon">}</span>
+                </a>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link active">01. Home</a></li>
+                <li><a href="#about" class="nav-link">02. Sobre</a></li>
+                <li><a href="#tech" class="nav-link">03. Stack</a></li>
+                <li><a href="#projects" class="nav-link">04. Projetos</a></li>
+                <li><a href="#contact" class="nav-link">05. Contato</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <a href="mailto:davmendes15@gmail.com" class="cta-button">
+                    <span>Vamos conversar</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <div class="grid-pattern"></div>
+            <div class="floating-elements">
+                <div class="floating-element" data-speed="0.5"></div>
+                <div class="floating-element" data-speed="0.8"></div>
+                <div class="floating-element" data-speed="0.3"></div>
+            </div>
+        </div>
+        
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-intro">
+                    <span class="hero-greeting">Olá, eu sou</span>
+                </div>
+                
+                <h1 class="hero-title">
+                    <span class="title-line">David Mendes</span>
+                    <span class="title-line title-secondary">Desenvolvedor Full Stack</span>
+                </h1>
+                
+                <p class="hero-description">
+                    Estudante apaixonado por tecnologia, focado em criar soluções digitais 
+                    inovadoras e experiências de usuário excepcionais. Especializado em 
+                    desenvolvimento web moderno e sempre em busca de novos desafios.
+                </p>
+                
+                <div class="hero-actions">
+                    <a href="#projects" class="btn btn-primary">
+                        <span>Ver Projetos</span>
+                        <i class="fas fa-code"></i>
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <span>Entre em Contato</span>
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="2">0</span>
+                        <span class="stat-label">Anos de Estudo</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="10">0</span>
+                        <span class="stat-label">Projetos</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="5">0</span>
+                        <span class="stat-label">Tecnologias</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="code-window">
+                    <div class="window-header">
+                        <div class="window-controls">
+                            <span class="control close"></span>
+                            <span class="control minimize"></span>
+                            <span class="control maximize"></span>
+                        </div>
+                        <div class="window-title">portfolio.js</div>
+                    </div>
+                    <div class="window-content">
+                        <div class="code-line">
+                            <span class="line-number">1</span>
+                            <span class="code-text">
+                                <span class="keyword">const</span> 
+                                <span class="variable">developer</span> = {
+                            </span>
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">2</span>
+                            <span class="code-text">
+                                &nbsp;&nbsp;<span class="property">name</span>: 
+                                <span class="string">'David Mendes'</span>,
+                            </span>
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">3</span>
+                            <span class="code-text">
+                                &nbsp;&nbsp;<span class="property">skills</span>: [
+                                <span class="string">'JavaScript'</span>, 
+                                <span class="string">'React'</span>],
+                            </span>
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">4</span>
+                            <span class="code-text">
+                                &nbsp;&nbsp;<span class="property">passion</span>: 
+                                <span class="string">'Criar soluções'</span>
+                            </span>
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">5</span>
+                            <span class="code-text">};</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <div class="scroll-text">Role para baixo</div>
+            <div class="scroll-arrow">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">02.</span>
+                <h2 class="section-title">Sobre Mim</h2>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="text-block">
+                        <p>
+                            Sou um estudante apaixonado por tecnologia, atualmente cursando 
+                            <strong>Engenharia de Software</strong> na UCSAL e 
+                            <strong>Técnico em Desenvolvimento de Sistemas</strong> no SENAC.
+                        </p>
+                        
+                        <p>
+                            Minha jornada na programação começou com curiosidade e se transformou 
+                            em paixão. Estou sempre em busca de aprender novas tecnologias e 
+                            aplicar conhecimentos em projetos práticos que fazem a diferença.
+                        </p>
+                        
+                        <p>
+                            Meu objetivo é contribuir com soluções inovadoras e eficientes, 
+                            sempre mantendo o foco na qualidade do código e na experiência 
+                            do usuário.
+                        </p>
+                    </div>
+                    
+                    <div class="skills-preview">
+                        <h3>Principais Tecnologias:</h3>
+                        <div class="skills-tags">
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">PHP</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">MySQL</span>
+                            <span class="skill-tag">Git</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-visual">
+                    <div class="profile-card">
+                        <div class="profile-image">
+                            <div class="image-placeholder">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="status-indicator">
+                                <span class="status-dot"></span>
+                                <span class="status-text">Disponível para trabalho</span>
+                            </div>
+                        </div>
+                        
+                        <div class="education-timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-date">2025 (3°semestre) - 2028</div>
+                                <div class="timeline-content">
+                                    <h4>Engenharia de Software</h4>
+                                    <p>Universidade Católica do Salvador (UCSAL)</p>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <div class="timeline-date">2024 - 2025</div>
+                                <div class="timeline-content">
+                                    <h4>Técnico em Desenvolvimento de Sistemas</h4>
+                                    <p>Serviço Nacional de Aprendizagem Comercial (SENAC)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section id="tech" class="tech">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">03.</span>
+                <h2 class="section-title">Stack Tecnológico</h2>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="tech-content">
+                <div class="tech-grid">
+                    <div class="tech-category" data-category="languages">
+                        <div class="category-header">
+                            <div class="category-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h3>Linguagens</h3>
+                        </div>
+                        <div class="tech-items">
+                            <div class="tech-item" data-tech="javascript">
+                                <div class="tech-icon">
+                                    <i class="fab fa-js-square"></i>
+                                </div>
+                                <div class="tech-info">
+                                    <span class="tech-name">JavaScript</span>
+                                    <div class="tech-level">
+                                        <div class="level-bar" data-level="85"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tech-item" data-tech="php">
+                                <div class="tech-icon">
+                                    <i class="fa-brands fa-php"></i>
+                                </div>
+                                <div class="tech-info">
+                                    <span class="tech-name">PHP</span>
+                                    <div class="tech-level">
+                                        <div class="level-bar" data-level="85"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="tech-item" data-tech="java">
+                                <div class="tech-icon">
+                                    <i class="fab fa-java"></i>
+                                </div>
+                                <div class="tech-info">
+                                    <span class="tech-name">Java</span>
+                                    <div class="tech-level">
+                                        <div class="level-bar" data-level="75"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="tech-item" data-tech="python">
+                                <div class="tech-icon">
+                                    <i class="fab fa-python"></i>
+                                </div>
+                                <div class="tech-info">
+                                    <span class="tech-name">Python</span>
+                                    <div class="tech-level">
+                                        <div class="level-bar" data-level="70"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tech-category" data-category="frontend">
+                        <div class="category-header">
+                            <div class="category-icon">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                            <h3>Frontend</h3>
+                        </div>
+                        <div class="tech-items">
+                            <div class="tech-item" data-tech="react">
+                                <div class="tech-icon">
+                                    <i class="fab fa-react"></i>
+                                </div>
+                                <div class="tech-info">
+                                    <span class="tech-name">React</span>
+                                    <div class="tech-level">
+                                        <div class="level-bar" data-level="80"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="tech-item" data-tech="html">
+                                <div class="tech-icon">
+                                    <i class="fab fa-html5"></i>
+                                </div>
+                                <div class="tech-info">
+                                    <span class="tech-name">HTML5</span>
+                                    <div class="tech-level">
+                                        <div class="level-bar" data-level="90"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="tech-item" data-tech="css">
+                                <div class="tech-icon">
+                                    <i class="fab fa-css3-alt"></i>
+                                </div>
+                                <div class="tech-info">
+                                    <span class="tech-name">CSS3</span>
+                                    <div class="tech-level">
+                                        <div class="level-bar" data-level="85"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tech-category" data-category="backend">
+                        <div class="category-header">
+                            <div class="category-icon">
+                                <i class="fas fa-server"></i>
+                            </div>
+                            <h3>Database</h3>
+                        </div>
+                        <div class="tech-items">
+                            <div class="tech-item" data-tech="mysql">
+                                <div class="tech-icon">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                                <div class="tech-info">
+                                    <span class="tech-name">MySQL</span>
+                                    <div class="tech-level">
+                                        <div class="level-bar" data-level="75"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="tech-item" data-tech="sqlserver">
+                                <div class="tech-icon">
+                                    <i class="fas fa-server"></i>
+                                </div>
+                                <div class="tech-info">
+                                    <span class="tech-name">SQL Server</span>
+                                    <div class="tech-level">
+                                        <div class="level-bar" data-level="70"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tech-category" data-category="tools">
+                        <div class="category-header">
+                            <div class="category-icon">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <h3>Ferramentas</h3>
+                        </div>
+                        <div class="tech-items">
+                            <div class="tech-item" data-tech="git">
+                                <div class="tech-icon">
+                                    <i class="fab fa-git-alt"></i>
+                                </div>
+                                <div class="tech-info">
+                                    <span class="tech-name">Git</span>
+                                    <div class="tech-level">
+                                        <div class="level-bar" data-level="80"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="tech-item" data-tech="github">
+                                <div class="tech-icon">
+                                    <i class="fab fa-github"></i>
+                                </div>
+                                <div class="tech-info">
+                                    <span class="tech-name">GitHub</span>
+                                    <div class="tech-level">
+                                        <div class="level-bar" data-level="85"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">04.</span>
+                <h2 class="section-title">Projetos em Destaque</h2>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="projects-content">
+                <p class="section-description">
+                    Aqui estão alguns dos meus projetos mais recentes. Cada um representa 
+                    um desafio superado e uma oportunidade de aprendizado.
+                </p>
+                
+                <div class="projects-grid" id="projectsGrid">
+                    <!-- Os projetos serão carregados dinamicamente-->
+                </div>
+                
+                <div class="projects-cta">
+                    <a href="https://github.com/Davidmcao" target="_blank" class="btn btn-outline">
+                        <span>Ver Todos os Projetos</span>
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">05.</span>
+                <h2 class="section-title">Vamos Trabalhar Juntos</h2>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-text">
+                    <p>
+                        Estou sempre aberto a novas oportunidades e desafios interessantes. 
+                        Se você tem um projeto em mente ou quer apenas conversar sobre tecnologia, 
+                        ficarei feliz em ouvir de você!
+                    </p>
+                </div>
+                
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-info">
+                            <h3>Email</h3>
+                            <a href="mailto:davmendes15@gmail.com">davmendes15@gmail.com</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-info">
+                            <h3>Telefone</h3>
+                            <a href="tel:+5571988773321">+55 (71) 98877-3321</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <div class="contact-info">
+                            <h3>LinkedIn</h3>
+                            <a href="https://www.linkedin.com/in/david-mendes-cordeiro-alves-de-oliveira-49b291234/" target="_blank">
+                                David Mendes
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <div class="contact-info">
+                            <h3>GitHub</h3>
+                            <a href="https://github.com/Davidmcao" target="_blank">@Davidmcao</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-cta">
+                    <a href="mailto:davmendes15@gmail.com" class="btn btn-primary btn-large">
+                        <span>Enviar Email</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <p>&copy; 2025 David Mendes. Desenvolvido com ❤️ e muito ☕</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#home">Voltar ao Topo</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/projects.js"></script>
+</body>
+</html>
+
