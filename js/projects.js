@@ -19,7 +19,7 @@ const realProjects = [
         description: 'Uma aplicação web moderna e responsiva para calcular valores de frete baseados no CEP de destino, desenvolvida em PHP com integração à API ViaCEP.',
         tech: ['PHP', 'HTML5', 'CSS3', 'JavaScript'],
         featured: true,
-        githubUrl: 'https://github.com/Davidmcao/FreeCalc/tree/main'
+        githubUrl: 'https://freecalc.free.nf/?i=1'
     },
     {
         name: 'Projeto-Senac---Landing-Page-Pokedex',
