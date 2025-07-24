@@ -1,6 +1,6 @@
-/* ===== CSS VARIABLES ===== */
+/* ===== VARIÁVEIS CSS ===== */
 :root {
-  /* Colors */
+  /* Cores */
   --primary-green: #00ff88;
   --primary-green-dark: #00cc6a;
   --primary-green-light: #33ff99;
@@ -22,7 +22,7 @@
   --border-secondary: #444444;
   --border-accent: var(--primary-green);
   
-  /* Typography */
+  /* Tipografia */
   --font-primary: 'Inter', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
   
@@ -37,7 +37,7 @@
   --font-size-5xl: 3rem;
   --font-size-6xl: 3.75rem;
   
-  /* Spacing */
+  /* Espaçamento */
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;
   --space-md: 1rem;
@@ -47,19 +47,19 @@
   --space-3xl: 4rem;
   --space-4xl: 6rem;
   
-  /* Shadows */
+  /* Sombras */
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
   --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
   --shadow-glow: 0 0 20px var(--accent-green-glow);
   
-  /* Transitions */
+  /* Transições */
   --transition-fast: 0.15s ease;
   --transition-normal: 0.3s ease;
   --transition-slow: 0.5s ease;
   
-  /* Border Radius */
+  /* Bordas Arredondadas */
   --radius-sm: 0.375rem;
   --radius-md: 0.5rem;
   --radius-lg: 0.75rem;
@@ -99,7 +99,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ===== LOADING SCREEN ===== */
+/* ===== TELA DE CARREGAMENTO ===== */
 .loading-screen {
   position: fixed;
   top: 0;
@@ -154,7 +154,7 @@ body {
   100% { width: 100%; }
 }
 
-/* ===== UTILITIES ===== */
+/* ===== UTILITÁRIOS ===== */
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -173,7 +173,7 @@ body {
   border: 0;
 }
 
-/* ===== HEADER ===== */
+/* ===== CABEÇALHO ===== */
 .header {
   position: fixed;
   top: 0;
@@ -321,7 +321,7 @@ body {
   transition: all var(--transition-normal);
 }
 
-/* ===== HERO SECTION ===== */
+/* ===== SEÇÃO HERO ===== */
 .hero {
   min-height: 100vh;
   display: flex;
@@ -622,7 +622,7 @@ body {
   60% { transform: translateY(-5px); }
 }
 
-/* ===== SECTION STYLES ===== */
+/* ===== ESTILOS DAS SEÇÕES ===== */
 section {
   padding: var(--space-4xl) 0;
 }
@@ -663,7 +663,7 @@ section {
   margin-right: auto;
 }
 
-/* ===== ABOUT SECTION ===== */
+/* ===== SEÇÃO SOBRE ===== */
 .about {
   background: var(--bg-secondary);
 }
@@ -823,7 +823,7 @@ section {
   font-size: var(--font-size-base);
 }
 
-/* ===== TECH SECTION ===== */
+/* ===== SEÇÃO TECNOLOGIAS ===== */
 .tech {
   background: var(--bg-primary);
 }
@@ -941,7 +941,7 @@ section {
   width: 0%;
 }
 
-/* ===== PROJECTS SECTION ===== */
+/* ===== SEÇÃO PROJETOS ===== */
 .projects {
   background: var(--bg-secondary);
 }
@@ -1049,7 +1049,7 @@ section {
   text-align: center;
 }
 
-/* ===== CONTACT SECTION ===== */
+/* ===== SEÇÃO CONTATO ===== */
 .contact {
   background: var(--bg-primary);
 }
@@ -1126,7 +1126,7 @@ section {
   text-align: center;
 }
 
-/* ===== FOOTER ===== */
+/* ===== RODAPÉ ===== */
 .footer {
   background: var(--bg-secondary);
   padding: var(--space-2xl) 0;
@@ -1155,7 +1155,7 @@ section {
   color: var(--primary-green);
 }
 
-/* ===== ANIMATIONS ===== */
+/* ===== ANIMAÇÕES ===== */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -1201,7 +1201,7 @@ section {
   animation: fadeInRight 0.6s ease forwards;
 }
 
-/* ===== SCROLLBAR ===== */
+/* ===== BARRA DE ROLAGEM ===== */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -1219,7 +1219,7 @@ section {
   background: var(--primary-green-dark);
 }
 
-/* ===== RESPONSIVE DESIGN ===== */
+/* ===== DESIGN RESPONSIVO ===== */
 @media (max-width: 1024px) {
   .hero-container {
     grid-template-columns: 1fr;

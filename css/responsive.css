@@ -1,6 +1,6 @@
-/* ===== RESPONSIVE DESIGN ===== */
+/* ===== DESIGN RESPONSIVO ===== */
 
-/* ===== MOBILE MENU STYLES ===== */
+/* ===== ESTILOS DO MENU MOBILE ===== */
 @media (max-width: 1024px) {
   .nav-menu {
     position: fixed;
@@ -56,7 +56,7 @@
     gap: var(--space-md);
   }
   
-  /* Mobile menu overlay */
+  /* Sobreposição do menu mobile */
   .menu-open::before {
     content: '';
     position: fixed;
@@ -73,7 +73,7 @@
   }
 }
 
-/* ===== TABLET STYLES ===== */
+/* ===== ESTILOS PARA TABLET ===== */
 @media (max-width: 1024px) {
   .hero-container {
     grid-template-columns: 1fr;
@@ -116,9 +116,9 @@
   }
 }
 
-/* ===== MOBILE STYLES ===== */
+/* ===== ESTILOS PARA MOBILE ===== */
 @media (max-width: 768px) {
-  /* Container adjustments */
+  /* Ajustes de container */
   .container {
     padding: 0 var(--space-lg);
   }
@@ -127,7 +127,7 @@
     padding: 0 var(--space-lg);
   }
   
-  /* Typography scaling */
+  /* Escalonamento de tipografia */
   .hero-title .title-line {
     font-size: var(--font-size-4xl);
   }
@@ -144,7 +144,7 @@
     font-size: var(--font-size-base);
   }
   
-  /* Section adjustments */
+  /* Ajustes de seção */
   section {
     padding: var(--space-3xl) 0;
   }
@@ -161,7 +161,7 @@
     height: 2px;
   }
   
-  /* Hero section mobile */
+  /* Seção hero mobile */
   .hero {
     min-height: 90vh;
     padding: var(--space-4xl) 0;
@@ -192,7 +192,7 @@
     border: 1px solid var(--border-primary);
   }
   
-  /* Code window mobile */
+  /* Janela de código mobile */
   .code-window {
     max-width: 100%;
     margin: 0 auto;
@@ -207,7 +207,7 @@
     word-break: break-all;
   }
   
-  /* Grid adjustments */
+  /* Ajustes de grid */
   .tech-grid {
     grid-template-columns: 1fr;
   }
@@ -220,7 +220,7 @@
     grid-template-columns: 1fr;
   }
   
-  /* Tech category mobile */
+  /* Categoria de tecnologia mobile */
   .tech-category {
     padding: var(--space-xl);
   }
@@ -233,7 +233,7 @@
     padding: var(--space-md);
   }
   
-  /* Project card mobile */
+  /* Card de projeto mobile */
   .project-card {
     padding: var(--space-xl);
   }
@@ -248,19 +248,19 @@
     align-self: flex-end;
   }
   
-  /* Contact card mobile */
+  /* Card de contato mobile */
   .contact-card {
     padding: var(--space-xl);
   }
   
-  /* Footer mobile */
+  /* Rodapé mobile */
   .footer-content {
     flex-direction: column;
     gap: var(--space-md);
     text-align: center;
   }
   
-  /* Profile card mobile */
+  /* Card de perfil mobile */
   .profile-card {
     padding: var(--space-xl);
   }
@@ -274,7 +274,7 @@
     padding-left: var(--space-lg);
   }
   
-  /* Skills tags mobile */
+  /* Tags de habilidades mobile */
   .skills-tags {
     justify-content: center;
   }
@@ -285,9 +285,9 @@
   }
 }
 
-/* ===== SMALL MOBILE STYLES ===== */
+/* ===== ESTILOS PARA MOBILE PEQUENO ===== */
 @media (max-width: 480px) {
-  /* Container adjustments */
+  /* Ajustes de container */
   .container {
     padding: 0 var(--space-md);
   }
@@ -296,7 +296,7 @@
     padding: 0 var(--space-md);
   }
   
-  /* Typography scaling */
+  /* Escalonamento de tipografia */
   .hero-title .title-line {
     font-size: var(--font-size-3xl);
     line-height: 1.2;
@@ -314,7 +314,7 @@
     font-size: var(--font-size-lg);
   }
   
-  /* Brand adjustments */
+  /* Ajustes de marca */
   .brand-link {
     font-size: var(--font-size-lg);
   }
@@ -323,7 +323,7 @@
     font-size: var(--font-size-xl);
   }
   
-  /* Hero adjustments */
+  /* Ajustes do hero */
   .hero-description {
     font-size: var(--font-size-sm);
     line-height: 1.6;
@@ -333,7 +333,7 @@
     font-size: var(--font-size-base);
   }
   
-  /* Code window small mobile */
+  /* Janela de código mobile pequeno */
   .code-window {
     max-width: 280px;
   }
@@ -359,7 +359,7 @@
     min-width: 15px;
   }
   
-  /* Button adjustments */
+  /* Ajustes de botão */
   .btn {
     padding: var(--space-sm) var(--space-lg);
     font-size: var(--font-size-sm);
@@ -370,7 +370,7 @@
     font-size: var(--font-size-base);
   }
   
-  /* Card adjustments */
+  /* Ajustes de card */
   .tech-category,
   .project-card,
   .contact-card,
@@ -378,7 +378,7 @@
     padding: var(--space-lg);
   }
   
-  /* Stats mobile */
+  /* Estatísticas mobile */
   .stat-number {
     font-size: var(--font-size-xl);
   }
@@ -387,7 +387,7 @@
     font-size: var(--font-size-xs);
   }
   
-  /* Tech item small mobile */
+  /* Item de tecnologia mobile pequeno */
   .tech-item {
     padding: var(--space-sm);
     gap: var(--space-sm);
@@ -406,7 +406,7 @@
     font-size: var(--font-size-sm);
   }
   
-  /* Contact icon small mobile */
+  /* Ícone de contato mobile pequeno */
   .contact-icon {
     width: 50px;
     height: 50px;
@@ -416,7 +416,7 @@
     font-size: var(--font-size-lg);
   }
   
-  /* Mobile menu adjustments */
+  /* Ajustes do menu mobile */
   .nav-menu {
     width: 280px;
     padding: var(--space-3xl) var(--space-lg);
@@ -427,7 +427,7 @@
   }
 }
 
-/* ===== PROJECT FILTERS RESPONSIVE ===== */
+/* ===== FILTROS DE PROJETOS RESPONSIVO ===== */
 @media (max-width: 768px) {
   .project-filters {
     display: flex;
@@ -484,7 +484,7 @@
   }
 }
 
-/* ===== LOADING STATES RESPONSIVE ===== */
+/* ===== ESTADOS DE CARREGAMENTO RESPONSIVO ===== */
 @media (max-width: 768px) {
   .projects-loading,
   .projects-error,
@@ -510,9 +510,9 @@
   }
 }
 
-/* ===== ACCESSIBILITY RESPONSIVE ===== */
+/* ===== ACESSIBILIDADE RESPONSIVO ===== */
 @media (max-width: 768px) {
-  /* Larger touch targets */
+  /* Alvos de toque maiores */
   .nav-link,
   .btn,
   .project-link,
@@ -523,7 +523,7 @@
     justify-content: center;
   }
   
-  /* Better focus indicators */
+  /* Indicadores de foco melhores */
   .nav-link:focus,
   .btn:focus,
   .project-link:focus,
@@ -533,9 +533,9 @@
   }
 }
 
-/* ===== ANIMATION ADJUSTMENTS ===== */
+/* ===== AJUSTES DE ANIMAÇÃO ===== */
 @media (max-width: 768px) {
-  /* Reduce motion for mobile */
+  /* Reduzir movimento para mobile */
   @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -546,7 +546,7 @@
     }
   }
   
-  /* Simpler animations for mobile */
+  /* Animações mais simples para mobile */
   .floating-element {
     animation: none;
   }
@@ -555,11 +555,12 @@
     animation: none;
     background: var(--primary-green);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 }
 
-/* ===== LANDSCAPE MOBILE ===== */
+/* ===== MOBILE EM PAISAGEM ===== */
 @media (max-width: 768px) and (orientation: landscape) {
   .hero {
     min-height: 100vh;
@@ -580,7 +581,7 @@
   }
 }
 
-/* ===== PRINT STYLES ===== */
+/* ===== ESTILOS PARA IMPRESSÃO ===== */
 @media print {
   * {
     background: white !important;
@@ -619,9 +620,9 @@
   }
 }
 
-/* ===== HIGH DPI DISPLAYS ===== */
+/* ===== TELAS DE ALTA RESOLUÇÃO (DPI) ===== */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  /* Sharper borders and shadows for retina displays */
+  /* Bordas e sombras mais nítidas para telas retina */
   .project-card,
   .tech-category,
   .contact-card,
@@ -634,7 +635,7 @@
   }
 }
 
-/* ===== DARK MODE ADJUSTMENTS ===== */
+/* ===== AJUSTES PARA MODO ESCURO ===== */
 @media (prefers-color-scheme: dark) {
   :root {
     --bg-primary: #0a0a0a;
@@ -645,7 +646,7 @@
   }
 }
 
-/* ===== LIGHT THEME RESPONSIVE ===== */
+/* ===== TEMA CLARO RESPONSIVO ===== */
 .light-theme {
   --bg-primary: #ffffff;
   --bg-secondary: #f8f9fa;

@@ -1,10 +1,10 @@
-// ===== PROJECTS MANAGEMENT =====
+// ===== GERENCIAMENTO DE PROJETOS =====
 
-// GitHub API configuration
+// Configuração da API do GitHub
 const GITHUB_USERNAME = 'Davidmcao';
 const GITHUB_API_URL = `https://api.github.com/users/${GITHUB_USERNAME}/repos`;
 
-// Real projects from GitHub (based on actual repositories)
+// Projetos reais do GitHub (baseados em repositórios reais)
 const realProjects = [
     {
         name: 'portifolio',
@@ -19,8 +19,10 @@ const realProjects = [
         description: 'Uma aplicação web moderna e responsiva para calcular valores de frete baseados no CEP de destino, desenvolvida em PHP com integração à API ViaCEP.',
         tech: ['PHP', 'HTML5', 'CSS3', 'JavaScript'],
         featured: true,
-        githubUrl: 'https://freecalc.free.nf/?i=1'
+        demoUrl: 'https://freecalc.free.nf/?i=1', // ✅ Adicionado
+        githubUrl: 'https://github.com/Davidmcao/FreeCalc'
     },
+
     {
         name: 'Projeto-Senac---Landing-Page-Pokedex',
         description: 'Landing page temática do Pokémon desenvolvida como projeto do curso SENAC. Interface moderna e responsiva.',
@@ -58,7 +60,7 @@ const realProjects = [
     }
 ];
 
-// Project categories
+// Categorias de projetos
 const projectCategories = {
     all: 'Todos',
     web: 'Web Development',
@@ -66,7 +68,7 @@ const projectCategories = {
     frontend: 'Frontend'
 };
 
-// Tech stack icons mapping
+// Mapeamento de ícones da stack de tecnologias
 const techIcons = {
     'HTML5': 'fab fa-html5',
     'HTML': 'fab fa-html5',
@@ -77,7 +79,7 @@ const techIcons = {
     'Default': 'fas fa-code'
 };
 
-// ===== PROJECT LOADING =====
+// ===== CARREGAMENTO DE PROJETOS =====
 class ProjectManager {
     constructor() {
         this.projects = [];
@@ -85,26 +87,26 @@ class ProjectManager {
         this.currentFilter = 'all';
         this.isLoading = false;
         this.container = document.getElementById('projectsGrid');
-        
+
         this.init();
     }
-    
+
     async init() {
         await this.loadProjects();
         this.renderProjects();
         this.setupFilters();
         this.setupSearch();
     }
-    
+
     async loadProjects() {
         this.isLoading = true;
         this.showLoading();
-        
+
         try {
-            // Use real projects from GitHub
+            // Usar projetos reais do GitHub
             this.projects = realProjects;
-            
-            // Try to fetch additional data from GitHub API
+
+            // Tentar buscar dados adicionais da API do GitHub
             try {
                 const response = await fetch(GITHUB_API_URL);
                 if (response.ok) {
@@ -112,22 +114,22 @@ class ProjectManager {
                     this.mergeGitHubData(githubRepos);
                 }
             } catch (error) {
-                console.log('GitHub API not available, using static project data');
+                console.log('API do GitHub não disponível, usando dados estáticos dos projetos');
             }
-            
+
             this.filteredProjects = [...this.projects];
-            
+
         } catch (error) {
-            console.error('Error loading projects:', error);
+            console.error('Erro ao carregar projetos:', error);
             this.showError();
         } finally {
             this.isLoading = false;
             this.hideLoading();
         }
     }
-    
+
     mergeGitHubData(githubRepos) {
-        // Update existing projects with GitHub data
+        // Atualiza projetos existentes com dados do GitHub
         this.projects = this.projects.map(project => {
             const githubRepo = githubRepos.find(repo => repo.name === project.name);
             if (githubRepo) {
@@ -144,39 +146,39 @@ class ProjectManager {
             return project;
         });
     }
-    
+
     renderProjects() {
         if (!this.container) return;
-        
+
         if (this.filteredProjects.length === 0) {
             this.container.innerHTML = this.getEmptyState();
             return;
         }
-        
+
         const projectsHTML = this.filteredProjects
-            .slice(0, 6) // Limit to 6 projects for better performance
+            .slice(0, 6) // Limita a 6 projetos para melhor desempenho
             .map(project => this.createProjectCard(project))
             .join('');
-        
+
         this.container.innerHTML = projectsHTML;
-        
-        // Add animation delay to cards
+
+        // Adiciona delay de animação aos cards
         const cards = this.container.querySelectorAll('.project-card');
         cards.forEach((card, index) => {
             card.style.animationDelay = `${index * 0.1}s`;
             card.classList.add('fade-in-up');
         });
-        
-        // Setup card interactions
+
+        // Configura interações dos cards
         this.setupCardInteractions();
     }
-    
+
     createProjectCard(project) {
         const techBadges = project.tech
-            .slice(0, 4) // Limit to 4 tech badges
+            .slice(0, 4) // Limita a 4 badges de tecnologia
             .map(tech => `<span class="tech-badge">${tech}</span>`)
             .join('');
-        
+
         const stats = project.stars !== undefined ? `
             <div class="project-stats">
                 <span class="stat">
@@ -189,13 +191,13 @@ class ProjectManager {
                 </span>
             </div>
         ` : '';
-        
+
         const demoLink = project.demoUrl ? `
             <a href="${project.demoUrl}" target="_blank" class="project-link" title="Ver Demo">
                 <i class="fas fa-external-link-alt"></i>
             </a>
         ` : '';
-        
+
         return `
             <div class="project-card" data-category="${this.getProjectCategory(project)}">
                 <div class="project-header">
@@ -220,7 +222,7 @@ class ProjectManager {
             </div>
         `;
     }
-    
+
     formatProjectName(name) {
         return name
             .replace(/-/g, ' ')
@@ -228,32 +230,32 @@ class ProjectManager {
             .replace(/Senac/g, 'SENAC')
             .replace(/Dbz/g, 'DBZ');
     }
-    
+
     getProjectCategory(project) {
         const name = project.name.toLowerCase();
         const tech = project.tech.join(' ').toLowerCase();
-        
+
         if (tech.includes('java')) return 'java';
         if (tech.includes('html') || tech.includes('css') || tech.includes('javascript')) return 'web';
         if (name.includes('landing') || name.includes('page')) return 'frontend';
-        
-        return 'web'; // Default category
+
+        return 'web'; // Categoria padrão
     }
-    
+
     setupCardInteractions() {
         const cards = this.container.querySelectorAll('.project-card');
-        
+
         cards.forEach(card => {
-            // Hover effect
+            // Efeito de hover
             card.addEventListener('mouseenter', () => {
                 card.style.transform = 'translateY(-8px) scale(1.02)';
             });
-            
+
             card.addEventListener('mouseleave', () => {
                 card.style.transform = 'translateY(0) scale(1)';
             });
-            
-            // Click effect
+
+            // Efeito de clique
             card.addEventListener('click', (e) => {
                 if (!e.target.closest('.project-link')) {
                     const githubLink = card.querySelector('.project-link[href*="github"]');
@@ -264,21 +266,21 @@ class ProjectManager {
             });
         });
     }
-    
+
     setupFilters() {
-        // Create filter buttons if they don't exist
+        // Cria botões de filtro se não existirem
         const filtersContainer = document.querySelector('.project-filters');
         if (!filtersContainer) {
             this.createFilterButtons();
         }
-        
-        // Setup filter event listeners
+
+        // Configura os listeners dos filtros
         document.addEventListener('click', (e) => {
             if (e.target.matches('.filter-btn')) {
                 const filter = e.target.dataset.filter;
                 this.filterProjects(filter);
-                
-                // Update active filter button
+
+                // Atualiza botão de filtro ativo
                 document.querySelectorAll('.filter-btn').forEach(btn => {
                     btn.classList.remove('active');
                 });
@@ -286,34 +288,34 @@ class ProjectManager {
             }
         });
     }
-    
+
     createFilterButtons() {
         const projectsSection = document.getElementById('projects');
         const container = projectsSection.querySelector('.container');
         const sectionHeader = container.querySelector('.section-header');
-        
+
         const filtersHTML = `
             <div class="project-filters">
                 ${Object.entries(projectCategories)
-                    .map(([key, label]) => `
+                .map(([key, label]) => `
                         <button class="filter-btn ${key === 'all' ? 'active' : ''}" data-filter="${key}">
                             ${label}
                         </button>
                     `).join('')}
             </div>
         `;
-        
+
         sectionHeader.insertAdjacentHTML('afterend', filtersHTML);
     }
-    
+
     setupSearch() {
-        // Create search input if it doesn't exist
+        // Cria campo de busca se não existir
         const searchContainer = document.querySelector('.project-search');
         if (!searchContainer) {
             this.createSearchInput();
         }
-        
-        // Setup search event listener
+
+        // Configura listener do campo de busca
         const searchInput = document.getElementById('projectSearch');
         if (searchInput) {
             searchInput.addEventListener('input', (e) => {
@@ -321,7 +323,7 @@ class ProjectManager {
             });
         }
     }
-    
+
     createSearchInput() {
         const filtersContainer = document.querySelector('.project-filters');
         if (filtersContainer) {
@@ -334,42 +336,42 @@ class ProjectManager {
             filtersContainer.insertAdjacentHTML('afterend', searchHTML);
         }
     }
-    
+
     filterProjects(category) {
         this.currentFilter = category;
-        
+
         if (category === 'all') {
             this.filteredProjects = [...this.projects];
         } else {
-            this.filteredProjects = this.projects.filter(project => 
+            this.filteredProjects = this.projects.filter(project =>
                 this.getProjectCategory(project) === category
             );
         }
-        
+
         this.renderProjects();
     }
-    
+
     searchProjects(query) {
         const searchTerm = query.toLowerCase().trim();
-        
+
         if (!searchTerm) {
             this.filterProjects(this.currentFilter);
             return;
         }
-        
+
         this.filteredProjects = this.projects.filter(project => {
             const searchableText = [
                 project.name,
                 project.description,
                 ...project.tech
             ].join(' ').toLowerCase();
-            
+
             return searchableText.includes(searchTerm);
         });
-        
+
         this.renderProjects();
     }
-    
+
     showLoading() {
         if (this.container) {
             this.container.innerHTML = `
@@ -380,14 +382,14 @@ class ProjectManager {
             `;
         }
     }
-    
+
     hideLoading() {
         const loadingElement = document.querySelector('.projects-loading');
         if (loadingElement) {
             loadingElement.remove();
         }
     }
-    
+
     showError() {
         if (this.container) {
             this.container.innerHTML = `
@@ -402,7 +404,7 @@ class ProjectManager {
             `;
         }
     }
-    
+
     getEmptyState() {
         return `
             <div class="projects-empty">
@@ -414,14 +416,14 @@ class ProjectManager {
     }
 }
 
-// ===== INITIALIZE PROJECT MANAGER =====
+// ===== INICIALIZAÇÃO DO GERENCIADOR DE PROJETOS =====
 let projectManager;
 
 document.addEventListener('DOMContentLoaded', () => {
     projectManager = new ProjectManager();
 });
 
-// ===== UTILITY FUNCTIONS =====
+// ===== FUNÇÕES UTILITÁRIAS =====
 function getTechIcon(tech) {
     return techIcons[tech] || techIcons['Default'];
 }
@@ -440,7 +442,7 @@ function truncateText(text, maxLength = 150) {
     return text.substring(0, maxLength).trim() + '...';
 }
 
-// ===== EXPORT FOR TESTING =====
+// ===== EXPORTAÇÃO PARA TESTES =====
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
         ProjectManager,

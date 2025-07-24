@@ -1,6 +1,6 @@
-// ===== MAIN JAVASCRIPT FILE =====
+// ===== ARQUIVO JAVASCRIPT PRINCIPAL =====
 
-// DOM Elements
+// Elementos do DOM
 const loadingScreen = document.getElementById('loadingScreen');
 const header = document.getElementById('header');
 const hamburger = document.getElementById('hamburger');
@@ -8,7 +8,7 @@ const navMenu = document.getElementById('navMenu');
 const themeToggle = document.getElementById('themeToggle');
 const navLinks = document.querySelectorAll('.nav-link');
 
-// ===== LOADING SCREEN =====
+// ===== TELA DE CARREGAMENTO =====
 window.addEventListener('load', () => {
     setTimeout(() => {
         if (loadingScreen) {
@@ -16,7 +16,7 @@ window.addEventListener('load', () => {
             document.body.style.overflow = 'auto';
         }
         
-        // Initialize animations after loading
+        // Inicializa animações após o carregamento
         initializeAnimations();
         initializeCounters();
         initializeTechLevels();
@@ -24,7 +24,7 @@ window.addEventListener('load', () => {
     }, 2000);
 });
 
-// ===== SCROLL INDICATOR FUNCTIONALITY =====
+// ===== FUNCIONALIDADE DO INDICADOR DE ROLAGEM =====
 function setupScrollIndicator() {
     const scrollIndicator = document.querySelector('.scroll-indicator');
     const scrollArrow = document.querySelector('.scroll-arrow');
@@ -43,10 +43,10 @@ function setupScrollIndicator() {
             }
         });
         
-        // Make it clickable with cursor pointer
+        // Torna clicável com cursor pointer
         scrollIndicator.style.cursor = 'pointer';
         
-        // Add hover effect
+        // Adiciona efeito de hover
         scrollIndicator.addEventListener('mouseenter', () => {
             if (scrollArrow) {
                 scrollArrow.style.transform = 'translateY(-5px)';
@@ -61,13 +61,13 @@ function setupScrollIndicator() {
     }
 }
 
-// ===== HEADER SCROLL EFFECT =====
+// ===== EFEITO DE ROLAGEM DO CABEÇALHO =====
 let lastScrollY = window.scrollY;
 
 window.addEventListener('scroll', () => {
     const currentScrollY = window.scrollY;
     
-    // Add scrolled class for styling
+    // Adiciona classe 'scrolled' para estilização
     if (header) {
         if (currentScrollY > 100) {
             header.classList.add('scrolled');
@@ -75,7 +75,7 @@ window.addEventListener('scroll', () => {
             header.classList.remove('scrolled');
         }
         
-        // Hide/show header on scroll
+        // Esconde/mostra o cabeçalho ao rolar
         if (currentScrollY > lastScrollY && currentScrollY > 100) {
             header.style.transform = 'translateY(-100%)';
         } else {
@@ -85,17 +85,17 @@ window.addEventListener('scroll', () => {
     
     lastScrollY = currentScrollY;
     
-    // Update active nav link
+    // Atualiza link de navegação ativo
     updateActiveNavLink();
     
-    // Trigger animations on scroll
+    // Dispara animações ao rolar
     handleScrollAnimations();
     
-    // Hide scroll indicator when scrolling
+    // Esconde indicador de rolagem ao rolar
     hideScrollIndicatorOnScroll();
 });
 
-// ===== HIDE SCROLL INDICATOR =====
+// ===== ESCONDER INDICADOR DE ROLAGEM =====
 function hideScrollIndicatorOnScroll() {
     const scrollIndicator = document.querySelector('.scroll-indicator');
     if (scrollIndicator) {
@@ -109,8 +109,8 @@ function hideScrollIndicatorOnScroll() {
     }
 }
 
-// ===== NAVIGATION =====
-// Mobile menu toggle
+// ===== NAVEGAÇÃO =====
+// Alternância do menu mobile
 if (hamburger && navMenu) {
     hamburger.addEventListener('click', () => {
         hamburger.classList.toggle('active');
@@ -119,7 +119,7 @@ if (hamburger && navMenu) {
     });
 }
 
-// Close mobile menu when clicking on a link
+// Fecha o menu mobile ao clicar em um link
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
         if (hamburger && navMenu) {
@@ -130,7 +130,7 @@ navLinks.forEach(link => {
     });
 });
 
-// Smooth scroll for navigation links
+// Rolagem suave para links de navegação
 navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault();
@@ -149,7 +149,7 @@ navLinks.forEach(link => {
     });
 });
 
-// Update active navigation link based on scroll position
+// Atualiza link de navegação ativo conforme posição de rolagem
 function updateActiveNavLink() {
     const sections = document.querySelectorAll('section[id]');
     const scrollPosition = window.scrollY + (header ? header.offsetHeight : 80) + 100;
@@ -169,7 +169,7 @@ function updateActiveNavLink() {
     });
 }
 
-// ===== THEME TOGGLE =====
+// ===== ALTERNAÇÃO DE TEMA =====
 let isDarkTheme = true;
 
 if (themeToggle) {
@@ -182,12 +182,12 @@ if (themeToggle) {
             icon.className = isDarkTheme ? 'fas fa-moon' : 'fas fa-sun';
         }
         
-        // Save theme preference
+        // Salva preferência de tema
         localStorage.setItem('theme', isDarkTheme ? 'dark' : 'light');
     });
 }
 
-// Load saved theme
+// Carrega tema salvo
 const savedTheme = localStorage.getItem('theme');
 if (savedTheme && themeToggle) {
     isDarkTheme = savedTheme === 'dark';
@@ -198,9 +198,9 @@ if (savedTheme && themeToggle) {
     }
 }
 
-// ===== ANIMATIONS =====
+// ===== ANIMAÇÕES =====
 function initializeAnimations() {
-    // Intersection Observer for scroll animations
+    // Intersection Observer para animações de rolagem
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -214,7 +214,7 @@ function initializeAnimations() {
         });
     }, observerOptions);
     
-    // Observe elements for animation
+    // Observa elementos para animação
     const animateElements = document.querySelectorAll('.tech-category, .project-card, .contact-card, .timeline-item');
     animateElements.forEach(el => {
         observer.observe(el);
@@ -222,7 +222,7 @@ function initializeAnimations() {
 }
 
 function handleScrollAnimations() {
-    // Parallax effect for floating elements
+    // Efeito parallax para elementos flutuantes
     const floatingElements = document.querySelectorAll('.floating-element');
     const scrolled = window.pageYOffset;
     
@@ -233,7 +233,7 @@ function handleScrollAnimations() {
     });
 }
 
-// ===== COUNTERS =====
+// ===== CONTADORES =====
 function initializeCounters() {
     const counters = document.querySelectorAll('.stat-number');
     
@@ -266,7 +266,7 @@ function animateCounter(element, target) {
     }, 40);
 }
 
-// ===== TECH LEVELS =====
+// ===== NÍVEIS DE TECNOLOGIA =====
 function initializeTechLevels() {
     const techLevels = document.querySelectorAll('.level-bar');
     
@@ -288,7 +288,7 @@ function initializeTechLevels() {
     });
 }
 
-// ===== TECH ITEM INTERACTIONS =====
+// ===== INTERAÇÕES COM ITENS DE TECNOLOGIA =====
 document.addEventListener('DOMContentLoaded', () => {
     const techItems = document.querySelectorAll('.tech-item');
     
@@ -296,7 +296,7 @@ document.addEventListener('DOMContentLoaded', () => {
         item.addEventListener('mouseenter', () => {
             const techName = item.dataset.tech;
             if (techName) {
-                // Add hover effect or show additional info
+                // Adiciona efeito de hover ou mostra informação adicional
                 item.style.transform = 'translateX(10px) scale(1.02)';
             }
         });
@@ -307,32 +307,32 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// ===== FORM HANDLING =====
+// ===== TRATAMENTO DO FORMULÁRIO =====
 function handleContactForm() {
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
-            // Get form data
+            // Obtém dados do formulário
             const formData = new FormData(contactForm);
             const data = Object.fromEntries(formData);
             
-            // Show loading state
+            // Mostra estado de carregamento
             const submitBtn = contactForm.querySelector('button[type="submit"]');
             const originalText = submitBtn.innerHTML;
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
             submitBtn.disabled = true;
             
-            // Simulate form submission
+            // Simula envio do formulário
             setTimeout(() => {
-                // Reset form
+                // Reseta formulário
                 contactForm.reset();
                 
-                // Show success message
+                // Mostra mensagem de sucesso
                 showNotification('Mensagem enviada com sucesso!', 'success');
                 
-                // Reset button
+                // Reseta botão
                 submitBtn.innerHTML = originalText;
                 submitBtn.disabled = false;
             }, 2000);
@@ -340,7 +340,7 @@ function handleContactForm() {
     }
 }
 
-// ===== NOTIFICATIONS =====
+// ===== NOTIFICAÇÕES =====
 function showNotification(message, type = 'info') {
     const notification = document.createElement('div');
     notification.className = `notification notification-${type}`;
@@ -356,17 +356,17 @@ function showNotification(message, type = 'info') {
     
     document.body.appendChild(notification);
     
-    // Show notification
+    // Mostra notificação
     setTimeout(() => {
         notification.classList.add('show');
     }, 100);
     
-    // Auto remove after 5 seconds
+    // Remove automaticamente após 5 segundos
     setTimeout(() => {
         removeNotification(notification);
     }, 5000);
     
-    // Close button
+    // Botão de fechar
     notification.querySelector('.notification-close').addEventListener('click', () => {
         removeNotification(notification);
     });
@@ -381,9 +381,9 @@ function removeNotification(notification) {
     }, 300);
 }
 
-// ===== KEYBOARD NAVIGATION =====
+// ===== NAVEGAÇÃO POR TECLADO =====
 document.addEventListener('keydown', (e) => {
-    // ESC key to close mobile menu
+    // Tecla ESC para fechar menu mobile
     if (e.key === 'Escape') {
         if (hamburger && navMenu) {
             hamburger.classList.remove('active');
@@ -392,7 +392,7 @@ document.addEventListener('keydown', (e) => {
         }
     }
     
-    // Arrow keys for navigation
+    // Setas para navegação
     if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
         e.preventDefault();
         const sections = Array.from(document.querySelectorAll('section[id]'));
@@ -425,8 +425,8 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// ===== PERFORMANCE OPTIMIZATIONS =====
-// Debounce function for scroll events
+// ===== OTIMIZAÇÕES DE PERFORMANCE =====
+// Função debounce para eventos de rolagem
 function debounce(func, wait) {
     let timeout;
     return function executedFunction(...args) {
@@ -439,7 +439,7 @@ function debounce(func, wait) {
     };
 }
 
-// Throttle function for resize events
+// Função throttle para eventos de resize
 function throttle(func, limit) {
     let inThrottle;
     return function() {
@@ -453,7 +453,7 @@ function throttle(func, limit) {
     };
 }
 
-// Optimized scroll handler
+// Manipulador de rolagem otimizado
 const optimizedScrollHandler = throttle(() => {
     updateActiveNavLink();
     handleScrollAnimations();
@@ -462,9 +462,9 @@ const optimizedScrollHandler = throttle(() => {
 
 window.addEventListener('scroll', optimizedScrollHandler);
 
-// ===== RESIZE HANDLER =====
+// ===== MANIPULADOR DE RESIZE =====
 const optimizedResizeHandler = debounce(() => {
-    // Handle responsive changes
+    // Lida com mudanças responsivas
     if (window.innerWidth > 1024) {
         if (hamburger && navMenu) {
             hamburger.classList.remove('active');
@@ -476,8 +476,8 @@ const optimizedResizeHandler = debounce(() => {
 
 window.addEventListener('resize', optimizedResizeHandler);
 
-// ===== ACCESSIBILITY =====
-// Focus management for keyboard navigation
+// ===== ACESSIBILIDADE =====
+// Gerenciamento de foco para navegação por teclado
 document.addEventListener('focusin', (e) => {
     if (e.target.matches('.nav-link, .btn, .contact-card a')) {
         e.target.style.outline = '2px solid var(--primary-green)';
@@ -491,16 +491,16 @@ document.addEventListener('focusout', (e) => {
     }
 });
 
-// ===== INITIALIZE =====
+// ===== INICIALIZAÇÃO =====
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize all components
+    // Inicializa todos os componentes
     handleContactForm();
     setupScrollIndicator();
     
-    // Add loading class to body
+    // Adiciona classe de carregamento ao body
     document.body.classList.add('loading');
     
-    // Remove loading class after everything is loaded
+    // Remove classe de carregamento após tudo carregar
     window.addEventListener('load', () => {
         setTimeout(() => {
             document.body.classList.remove('loading');
@@ -524,7 +524,7 @@ document.addEventListener('keydown', (e) => {
     }
     
     if (konamiCode.join(',') === konamiSequence.join(',')) {
-        // Easter egg activated!
+        // Easter egg ativado!
         document.body.style.filter = 'hue-rotate(180deg)';
         showNotification('🎉 Código Konami ativado! Você encontrou o easter egg!', 'success');
         
@@ -536,7 +536,7 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// ===== EXPORT FOR TESTING =====
+// ===== EXPORTAÇÃO PARA TESTES =====
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
         updateActiveNavLink,
@@ -547,4 +547,3 @@ if (typeof module !== 'undefined' && module.exports) {
         setupScrollIndicator
     };
 }
-
