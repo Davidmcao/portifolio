@@ -311,14 +311,55 @@ body {
   display: none;
   flex-direction: column;
   cursor: pointer;
-  gap: 4px;
+  gap: 6px;
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-normal);
+  position: relative;
+  z-index: calc(var(--z-modal) + 2);
+}
+
+.hamburger:hover {
+  background: var(--bg-tertiary);
+  transform: scale(1.05);
 }
 
 .hamburger span {
-  width: 25px;
+  width: 28px;
   height: 3px;
   background: var(--text-primary);
-  transition: all var(--transition-normal);
+  border-radius: 2px;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transform-origin: center;
+  position: relative;
+}
+
+.hamburger span:nth-child(1) {
+  transform-origin: top left;
+}
+
+.hamburger span:nth-child(3) {
+  transform-origin: bottom left;
+}
+
+/* Estados ativos do hambúrguer */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+  background: var(--primary-green);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+  background: var(--primary-green);
+}
+
+.hamburger.active:hover {
+  background: rgba(0, 255, 136, 0.1);
 }
 
 /* ===== SEÇÃO HERO ===== */
@@ -1219,106 +1260,514 @@ section {
   background: var(--primary-green-dark);
 }
 
-/* ===== DESIGN RESPONSIVO ===== */
-@media (max-width: 1024px) {
-  .hero-container {
-    grid-template-columns: 1fr;
-    gap: var(--space-2xl);
-    text-align: center;
-  }
+/* ===== TEMA CLARO - MELHORIAS VISUAIS ===== */
+.light-theme {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #e9ecef;
+  --bg-card: #ffffff;
+  --bg-glass: rgba(255, 255, 255, 0.95);
   
-  .about-content {
-    grid-template-columns: 1fr;
-    gap: var(--space-2xl);
-  }
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --text-muted: #adb5bd;
   
-  .nav-menu {
-    display: none;
-  }
+  --border-primary: #dee2e6;
+  --border-secondary: #e9ecef;
   
-  .hamburger {
-    display: flex;
-  }
-  
-  .nav-actions .cta-button {
-    display: none;
-  }
+  /* Cores específicas para elementos no tema claro */
+  --header-bg-light: rgba(255, 255, 255, 0.95);
+  --nav-link-light: #495057;
+  --nav-link-hover-light: #00ff88;
+  --theme-toggle-bg-light: #ffffff;
+  --theme-toggle-border-light: #dee2e6;
+  --theme-toggle-icon-light: #495057;
 }
 
-@media (max-width: 768px) {
-  .container {
-    padding: 0 var(--space-lg);
-  }
-  
-  .nav {
-    padding: 0 var(--space-lg);
-  }
-  
-  .hero-title .title-line {
-    font-size: var(--font-size-4xl);
-  }
-  
-  .hero-title .title-secondary {
-    font-size: var(--font-size-2xl);
-  }
-  
-  .hero-actions {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .hero-stats {
-    justify-content: center;
-  }
-  
-  .section-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-md);
-  }
-  
-  .section-line {
-    width: 100px;
-  }
-  
-  .tech-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .contact-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .footer-content {
-    flex-direction: column;
-    gap: var(--space-md);
-    text-align: center;
-  }
+/* Estilos específicos para o cabeçalho no tema claro */
+.light-theme .header {
+  background: var(--header-bg-light);
+  border-bottom: 1px solid var(--border-primary);
+  backdrop-filter: blur(20px);
 }
 
-@media (max-width: 480px) {
-  .hero-title .title-line {
-    font-size: var(--font-size-3xl);
-  }
-  
-  .hero-title .title-secondary {
-    font-size: var(--font-size-xl);
-  }
-  
-  .code-window {
-    max-width: 300px;
-  }
-  
-  .window-content {
-    padding: var(--space-md);
-  }
-  
-  .code-text {
-    font-size: var(--font-size-xs);
-  }
+.light-theme .header.scrolled {
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Links de navegação no tema claro */
+.light-theme .nav-link {
+  color: var(--nav-link-light);
+}
+
+.light-theme .nav-link:hover,
+.light-theme .nav-link.active {
+  color: var(--nav-link-hover-light);
+}
+
+/* Botão de alternância de tema no tema claro */
+.light-theme .theme-toggle {
+  background: var(--theme-toggle-bg-light);
+  border-color: var(--theme-toggle-border-light);
+  color: var(--theme-toggle-icon-light);
+}
+
+.light-theme .theme-toggle:hover {
+  border-color: var(--primary-green);
+  color: var(--primary-green);
+  background: rgba(0, 255, 136, 0.05);
+}
+
+/* Hambúrguer no tema claro */
+.light-theme .hamburger span {
+  background: var(--text-primary);
+}
+
+.light-theme .hamburger:hover {
+  background: var(--bg-tertiary);
+}
+
+.light-theme .hamburger.active span:nth-child(1),
+.light-theme .hamburger.active span:nth-child(3) {
+  background: var(--primary-green);
+}
+
+/* Marca/logo no tema claro */
+.light-theme .brand-link {
+  color: var(--text-primary);
+}
+
+.light-theme .brand-link:hover {
+  color: var(--primary-green);
+}
+
+.light-theme .brand-icon {
+  color: var(--primary-green);
+}
+
+/* Botão CTA no tema claro */
+.light-theme .cta-button {
+  color: var(--primary-green);
+  border-color: var(--primary-green);
+}
+
+.light-theme .cta-button:hover {
+  background: var(--primary-green);
+  color: var(--bg-primary);
+}
+
+/* Cards no tema claro */
+.light-theme .project-card,
+.light-theme .tech-category,
+.light-theme .contact-card,
+.light-theme .profile-card {
+  background: var(--bg-card);
+  border-color: var(--border-primary);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.light-theme .project-card:hover,
+.light-theme .tech-category:hover,
+.light-theme .contact-card:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  border-color: var(--primary-green);
+}
+
+/* Janela de código no tema claro */
+.light-theme .code-window {
+  background: var(--bg-card);
+  border-color: var(--border-primary);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.light-theme .window-header {
+  background: var(--bg-tertiary);
+  border-bottom-color: var(--border-primary);
+}
+
+.light-theme .window-title {
+  color: var(--text-secondary);
+}
+
+/* Elementos de tecnologia no tema claro */
+.light-theme .tech-item {
+  background: var(--bg-tertiary);
+  border-color: var(--border-primary);
+}
+
+.light-theme .tech-item:hover {
+  background: var(--bg-secondary);
+  border-color: var(--primary-green);
+}
+
+/* Tags de habilidades no tema claro */
+.light-theme .skill-tag,
+.light-theme .tech-badge {
+  background: var(--bg-tertiary);
+  border-color: var(--border-primary);
+  color: var(--primary-green);
+}
+
+.light-theme .skill-tag:hover {
+  background: var(--primary-green);
+  color: var(--bg-primary);
+}
+
+/* Rodapé no tema claro */
+.light-theme .footer {
+  background: var(--bg-secondary);
+  border-top-color: var(--border-primary);
+}
+
+/* Ícones e elementos visuais no tema claro */
+.light-theme .category-icon,
+.light-theme .contact-icon,
+.light-theme .tech-icon {
+  background: var(--bg-tertiary);
+  border-color: var(--border-primary);
+}
+
+.light-theme .category-icon i,
+.light-theme .contact-icon i,
+.light-theme .tech-icon i {
+  color: var(--primary-green);
+}
+
+/* Links de projeto no tema claro */
+.light-theme .project-link {
+  background: var(--bg-tertiary);
+  border-color: var(--border-primary);
+  color: var(--text-secondary);
+}
+
+.light-theme .project-link:hover {
+  background: var(--primary-green);
+  color: var(--bg-primary);
+}
+
+/* Seções no tema claro */
+.light-theme .about {
+  background: var(--bg-secondary);
+}
+
+.light-theme .tech {
+  background: var(--bg-primary);
+}
+
+.light-theme .projects {
+  background: var(--bg-secondary);
+}
+
+.light-theme .contact {
+  background: var(--bg-primary);
+}
+
+/* Elementos flutuantes no tema claro */
+.light-theme .floating-element {
+  background: linear-gradient(45deg, rgba(0, 255, 136, 0.1), transparent);
+}
+
+/* Grid pattern no tema claro */
+.light-theme .grid-pattern {
+  background-image: 
+    linear-gradient(rgba(0, 255, 136, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 136, 0.05) 1px, transparent 1px);
+}
+
+/* Placeholder de imagem no tema claro */
+.light-theme .image-placeholder {
+  background: var(--bg-tertiary);
+  border-color: var(--primary-green);
+}
+
+.light-theme .image-placeholder i {
+  color: var(--primary-green);
+}
+
+/* Timeline no tema claro */
+.light-theme .education-timeline::before {
+  background: var(--primary-green);
+}
+
+.light-theme .timeline-item::before {
+  background: var(--primary-green);
+}
+
+/* Barra de nível no tema claro */
+.light-theme .tech-level {
+  background: var(--bg-primary);
+}
+
+/* Controles da janela no tema claro */
+.light-theme .control.close { background: #ff5f57; }
+.light-theme .control.minimize { background: #ffbd2e; }
+.light-theme .control.maximize { background: #28ca42; }
+
+/* Barra de rolagem no tema claro */
+.light-theme ::-webkit-scrollbar-track {
+  background: var(--bg-tertiary);
+}
+
+.light-theme ::-webkit-scrollbar-thumb {
+  background: var(--primary-green);
+}
+
+.light-theme ::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-green-dark);
+}
+
+
+/* ===== MELHORIAS ADICIONAIS PARA TEMA CLARO ===== */
+
+/* Hero section no tema claro */
+.light-theme .hero {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+}
+
+.light-theme .hero-greeting {
+  color: var(--primary-green);
+}
+
+.light-theme .title-line {
+  color: var(--text-primary);
+}
+
+.light-theme .title-secondary {
+  color: var(--text-secondary);
+}
+
+.light-theme .hero-description {
+  color: var(--text-secondary);
+}
+
+/* Botões no tema claro */
+.light-theme .btn-primary {
+  background: var(--primary-green);
+  color: #ffffff;
+}
+
+.light-theme .btn-primary:hover {
+  background: var(--primary-green-dark);
+  color: #ffffff;
+}
+
+.light-theme .btn-secondary {
+  background: transparent;
+  color: var(--text-primary);
+  border-color: var(--border-primary);
+}
+
+.light-theme .btn-secondary:hover {
+  border-color: var(--primary-green);
+  color: var(--primary-green);
+  background: rgba(0, 255, 136, 0.05);
+}
+
+.light-theme .btn-outline {
+  background: transparent;
+  color: var(--primary-green);
+  border-color: var(--primary-green);
+}
+
+.light-theme .btn-outline:hover {
+  background: var(--primary-green);
+  color: #ffffff;
+}
+
+/* Estatísticas no tema claro */
+.light-theme .stat-number {
+  color: var(--primary-green);
+}
+
+.light-theme .stat-label {
+  color: var(--text-muted);
+}
+
+/* Indicador de rolagem no tema claro */
+.light-theme .scroll-text {
+  color: var(--text-muted);
+}
+
+.light-theme .scroll-arrow {
+  color: var(--primary-green);
+}
+
+/* Números de seção no tema claro */
+.light-theme .section-number {
+  color: var(--primary-green);
+}
+
+.light-theme .section-title {
+  color: var(--text-primary);
+}
+
+.light-theme .section-line {
+  background: var(--border-primary);
+}
+
+/* Descrição de seção no tema claro */
+.light-theme .section-description {
+  color: var(--text-secondary);
+}
+
+/* Status indicator no tema claro */
+.light-theme .status-dot {
+  background: var(--primary-green);
+}
+
+.light-theme .status-text {
+  color: var(--text-secondary);
+}
+
+/* Data da timeline no tema claro */
+.light-theme .timeline-date {
+  color: var(--primary-green);
+}
+
+.light-theme .timeline-content h4 {
+  color: var(--text-primary);
+}
+
+.light-theme .timeline-content p {
+  color: var(--text-secondary);
+}
+
+/* Headers de categoria no tema claro */
+.light-theme .category-header h3 {
+  color: var(--text-primary);
+}
+
+/* Nome da tecnologia no tema claro */
+.light-theme .tech-name {
+  color: var(--text-primary);
+}
+
+/* Título do projeto no tema claro */
+.light-theme .project-title {
+  color: var(--text-primary);
+}
+
+.light-theme .project-description {
+  color: var(--text-secondary);
+}
+
+/* Info de contato no tema claro */
+.light-theme .contact-info h3 {
+  color: var(--text-primary);
+}
+
+.light-theme .contact-info a {
+  color: var(--text-secondary);
+}
+
+.light-theme .contact-info a:hover {
+  color: var(--primary-green);
+}
+
+/* Texto de contato no tema claro */
+.light-theme .contact-text p {
+  color: var(--text-secondary);
+}
+
+/* Texto do rodapé no tema claro */
+.light-theme .footer-text p {
+  color: var(--text-muted);
+}
+
+.light-theme .footer-links a {
+  color: var(--text-secondary);
+}
+
+.light-theme .footer-links a:hover {
+  color: var(--primary-green);
+}
+
+/* Texto de preview de habilidades no tema claro */
+.light-theme .skills-preview h3 {
+  color: var(--text-primary);
+}
+
+/* Melhorias de contraste para acessibilidade */
+.light-theme .nav-link:focus,
+.light-theme .btn:focus,
+.light-theme .project-link:focus,
+.light-theme .contact-card a:focus {
+  outline: 2px solid var(--primary-green);
+  outline-offset: 2px;
+}
+
+/* Transições suaves entre temas */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Loading screen no tema claro */
+.light-theme .loading-screen {
+  background: var(--bg-primary);
+}
+
+.light-theme .loading-text {
+  color: var(--primary-green);
+}
+
+.light-theme .loading-bar {
+  background: var(--bg-tertiary);
+}
+
+/* Melhorias específicas para elementos que ficavam com baixo contraste */
+.light-theme .text-block p {
+  color: var(--text-secondary);
+}
+
+.light-theme .text-block strong {
+  color: var(--primary-green);
+  font-weight: 600;
+}
+
+/* Código de cores no tema claro */
+.light-theme .code-text {
+  color: var(--text-secondary);
+}
+
+.light-theme .keyword { color: #d73a49; }
+.light-theme .variable { color: #005cc5; }
+.light-theme .property { color: #22863a; }
+.light-theme .string { color: #032f62; }
+
+/* Linha de código no tema claro */
+.light-theme .line-number {
+  color: var(--text-muted);
+}
+
+/* Melhorias para elementos interativos */
+.light-theme .hamburger:focus {
+  outline: 2px solid var(--primary-green);
+  outline-offset: 2px;
+}
+
+.light-theme .theme-toggle:focus {
+  outline: 2px solid var(--primary-green);
+  outline-offset: 2px;
+}
+
+/* Sombras mais suaves no tema claro */
+.light-theme .hero-visual {
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.1));
+}
+
+/* Ajustes finais para garantir boa visibilidade */
+.light-theme .nav-menu {
+  border-left: 1px solid var(--border-primary);
+}
+
+.light-theme .header {
+  border-bottom: 1px solid var(--border-primary);
+}
+
+/* Garantir que o indicador de menu seja visível */
+.light-theme .nav-menu.active::before {
+  background: var(--primary-green);
+  opacity: 1;
 }
 

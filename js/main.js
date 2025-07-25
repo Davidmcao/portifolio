@@ -112,20 +112,88 @@ function hideScrollIndicatorOnScroll() {
 // ===== NAVEGAÇÃO =====
 // Alternância do menu mobile
 if (hamburger && navMenu) {
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navMenu.classList.toggle('active');
-        document.body.classList.toggle('menu-open');
+    // Criar overlay dinâmico
+    const menuOverlay = document.createElement('div');
+    menuOverlay.className = 'menu-overlay';
+    document.body.appendChild(menuOverlay);
+    
+    hamburger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMobileMenu();
+    });
+    
+    // Fechar menu ao clicar no overlay
+    menuOverlay.addEventListener('click', () => {
+        closeMobileMenu();
+    });
+    
+    // Função para abrir/fechar menu
+    function toggleMobileMenu() {
+        const isActive = hamburger.classList.contains('active');
+        
+        if (isActive) {
+            closeMobileMenu();
+        } else {
+            openMobileMenu();
+        }
+    }
+    
+    function openMobileMenu() {
+        hamburger.classList.add('active');
+        navMenu.classList.add('active');
+        menuOverlay.classList.add('active');
+        document.body.classList.add('menu-open');
+        
+        // Adiciona animação de entrada aos links
+        const links = navMenu.querySelectorAll('.nav-link');
+        links.forEach((link, index) => {
+            link.style.transitionDelay = `${0.1 + (index * 0.05)}s`;
+        });
+    }
+    
+    function closeMobileMenu() {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+        menuOverlay.classList.remove('active');
+        document.body.classList.remove('menu-open');
+        
+        // Remove delays de transição
+        const links = navMenu.querySelectorAll('.nav-link');
+        links.forEach(link => {
+            link.style.transitionDelay = '0s';
+        });
+    }
+    
+    // Fechar menu com tecla ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && hamburger.classList.contains('active')) {
+            closeMobileMenu();
+        }
+    });
+    
+    // Fechar menu ao redimensionar para desktop
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 1024) {
+            closeMobileMenu();
+        }
     });
 }
 
 // Fecha o menu mobile ao clicar em um link
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
-        if (hamburger && navMenu) {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-            document.body.classList.remove('menu-open');
+        if (hamburger && navMenu && hamburger.classList.contains('active')) {
+            // Usar a função closeMobileMenu se estiver disponível
+            if (typeof closeMobileMenu === 'function') {
+                closeMobileMenu();
+            } else {
+                // Fallback para compatibilidade
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.classList.remove('menu-open');
+                const overlay = document.querySelector('.menu-overlay');
+                if (overlay) overlay.classList.remove('active');
+            }
         }
     });
 });
@@ -383,15 +451,6 @@ function removeNotification(notification) {
 
 // ===== NAVEGAÇÃO POR TECLADO =====
 document.addEventListener('keydown', (e) => {
-    // Tecla ESC para fechar menu mobile
-    if (e.key === 'Escape') {
-        if (hamburger && navMenu) {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-            document.body.classList.remove('menu-open');
-        }
-    }
-    
     // Setas para navegação
     if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
         e.preventDefault();

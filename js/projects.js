@@ -11,7 +11,6 @@ const realProjects = [
         description: 'Meu portfólio pessoal desenvolvido com HTML, CSS e JavaScript. Design responsivo e moderno com foco na experiência do usuário.',
         tech: ['HTML5', 'CSS3', 'JavaScript'],
         featured: true,
-        demoUrl: 'https://david-mendes.vercel.app',
         githubUrl: 'https://github.com/Davidmcao/portifolio'
     },
     {
@@ -19,7 +18,7 @@ const realProjects = [
         description: 'Uma aplicação web moderna e responsiva para calcular valores de frete baseados no CEP de destino, desenvolvida em PHP com integração à API ViaCEP.',
         tech: ['PHP', 'HTML5', 'CSS3', 'JavaScript'],
         featured: true,
-        demoUrl: 'https://freecalc.free.nf/?i=1', // ✅ Adicionado
+        demoUrl: 'https://freecalc.free.nf/?i=1', 
         githubUrl: 'https://github.com/Davidmcao/FreeCalc'
     },
 
@@ -79,6 +78,7 @@ const techIcons = {
     'Default': 'fas fa-code'
 };
 
+
 // ===== CARREGAMENTO DE PROJETOS =====
 class ProjectManager {
     constructor() {
@@ -128,6 +128,7 @@ class ProjectManager {
         }
     }
 
+
     mergeGitHubData(githubRepos) {
         // Atualiza projetos existentes com dados do GitHub
         this.projects = this.projects.map(project => {
@@ -173,6 +174,7 @@ class ProjectManager {
         this.setupCardInteractions();
     }
 
+    
     createProjectCard(project) {
         const techBadges = project.tech
             .slice(0, 4) // Limita a 4 badges de tecnologia
@@ -452,4 +454,28 @@ if (typeof module !== 'undefined' && module.exports) {
         truncateText
     };
 }
+
+function updateGitHubProjectCount(count) {
+    const countElement = document.getElementById('github-project-count');
+    if (countElement) {
+        countElement.setAttribute('data-target', count);
+        countElement.textContent = count;
+    }
+}
+
+// Atualiza a contagem após carregar os projetos do GitHub
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        const response = await fetch(GITHUB_API_URL);
+        if (response.ok) {
+            const githubRepos = await response.json();
+            updateGitHubProjectCount(githubRepos.length);
+        } else {
+            // Fallback: mostra a quantidade de projetos locais
+            updateGitHubProjectCount(realProjects.length);
+        }
+    } catch (error) {
+        updateGitHubProjectCount(realProjects.length);
+    }
+});
 
